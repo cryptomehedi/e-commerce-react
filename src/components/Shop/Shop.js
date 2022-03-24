@@ -30,10 +30,19 @@ const Shop = () => {
         setCart(savedCart)
     },[products])
 
-    const handelAddToCart = (product)=>{
-        const newCart = [...cart , product]
+    const handelAddToCart = (selectedProduct)=>{
+        let newCart;
+        const existing = cart.find(product => product.id === selectedProduct.id);
+        if (!existing) {
+            selectedProduct.quantity = 1
+            newCart = [...cart , selectedProduct]
+        }else{
+            const rest = cart.filter(product => product.id !== selectedProduct.id);
+            existing.quantity = existing.quantity + 1
+            newCart = [...rest , existing]
+        }
         setCart(newCart)
-        addToDb(product.id)
+        addToDb(selectedProduct.id)
     }
     return (
         <div className="shop-container">
