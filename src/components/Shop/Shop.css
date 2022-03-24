@@ -5,5 +5,18 @@
 .product-container{
     display: grid;
     grid-template-columns: repeat(3 , 1fr);
-    grid-gap: 45px;
+    grid-gap: 30px;
+}
+.cart-container{
+    background-color: rgba(225, 153, 0 , 0.3);
+}
+@media screen and (max-width:688px){
+    .product-container{
+        grid-template-columns: repeat(1 , 1fr);
+    }
+}
+@media screen and (min-width: 689px) and (max-width: 992px){
+    .product-container{
+        grid-template-columns: repeat(2 , 1fr);
+    }
 }
